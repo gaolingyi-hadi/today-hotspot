@@ -4,18 +4,24 @@
     <a-popover
       class="item"
       trigger="hover"
+      placement="topLeft"
       v-for="(item, i) in sotspot_list"
       :key="i"
     >
       <template slot="content">
-        <p>{{ item.description | description }}</p>
+        <p class="popover-card">{{ item.description | description }}</p>
       </template>
-      <h2>
+      <div class="line">
         <img :src="item.logo" alt="" />
-        {{ i + 1 }}.
-        <a :href="item.url"> {{ item.title }}</a>
-      </h2>
+        <a :href="item.url"> {{ i + 1 }}. {{ item.title }}</a>
+      </div>
     </a-popover>
+    <div>
+      <a-back-top />
+      Scroll down to see the bottom-right
+      <strong style="color: rgba(64, 64, 64, 0.6)"> gray </strong>
+      button.
+    </div>
   </div>
 </template>
 
@@ -46,17 +52,21 @@ export default {
 <style scoped>
 h2 {
   font-size: 18px;
+  margin-bottom: 20px;
+}
+.line{
+  
 }
 .home {
   max-width: 1000px;
-  margin: 80px auto;
+  margin: 40px auto;
   text-align: left;
 }
 img {
   width: 18px;
 }
 .item {
-  transition: all 0.3;
+  transition: all 0.3s;
   padding: 10px;
 }
 .item:hover {
@@ -66,5 +76,8 @@ img {
 .home >>> .ant-popover-placement-topLeft,
 .home >>> .ant-popover-placement-topRight {
   width: 500px;
+}
+.popover-card {
+  max-width: 500px;
 }
 </style>
